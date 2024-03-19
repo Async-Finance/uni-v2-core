@@ -16,10 +16,11 @@ Change the `owner` Param in `ignition/parameters.json`.
 ```
 yarn deploy
 ```
-```
 
 # Deploy zksync
+
 Change default network to any zksync network(eg. zkSyncTestnetSepolia) in `hardhat.config.ts`
+
 ```
 yarn deploy-zksync
 ```
