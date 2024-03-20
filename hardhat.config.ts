@@ -12,14 +12,35 @@ import "dotenv/config";
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [{
-      version: "0.8.24",
+      version: "0.8.18",
       settings: { optimizer: { enabled: true, runs: 200 } }
     }]
   },
-  defaultNetwork: "MerlinTestnet",
+  zksolc: {
+    version: '1.3.13'
+  },
+  defaultNetwork: "zkLinkTestnet",
   networks: {
+    Merlin: {
+      url: "https://rpc.merlinchain.io",
+      accounts: [process.env.SECRET_KEY || ''],
+    },
     MerlinTestnet: {
       url: "https://testnet-rpc.merlinchain.io",
+      accounts: [process.env.SECRET_KEY || ''],
+    },
+    zkLink: {
+      url: "https://rpc.zklink.io",
+      zksync: true,
+      ethNetwork: "mainnet",
+      verifyURL: "https://explorer.zklink.io/contracts_verification",
+      accounts: [process.env.SECRET_KEY || ''],
+    },
+    zkLinkTestnet: {
+      url: "https://goerli.rpc.zklink.io",
+      zksync: true,
+      ethNetwork: "goerli",
+      verifyURL: "https://goerli.explorer.zklink.io/contract_verification",
       accounts: [process.env.SECRET_KEY || ''],
     },
     zkSyncTestnetSepolia: {
@@ -43,7 +64,8 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      MerlinTestnet: "merlintestnet"
+      MerlinTestnet: "merlintestnet",
+      Merlin: 'merlin',
     },
     customChains: [
       {
@@ -52,6 +74,30 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://testnet-scan.merlinchain.io/api",
           browserURL: "https://testnet-scan.merlinchain.io"
+        }
+      },
+      {
+        network: "Merlin",
+        chainId: 4200,
+        urls: {
+          apiURL: "https://scan.merlinchain.io/api",
+          browserURL: "https://scan.merlinchain.io"
+        }
+      },
+      {
+        network: "zkLink",
+        chainId: 810180,
+        urls: {
+          apiURL: "https://explorer.zklink.io/contracts/verify",
+          browserURL: "https://explorer.zklink.io"
+        }
+      },
+      {
+        network: "zkLinkTestnet",
+        chainId: 810182,
+        urls: {
+          apiURL: "https://goerli.explorer.zklink.io/contracts/verify",
+          browserURL: "https://goerli.explorer.zklink.io"
         }
       }
     ]

@@ -8,3 +8,4 @@ cache-zk
 .idea/
 node_modules/
 yarn-error.log
+deployments-zk

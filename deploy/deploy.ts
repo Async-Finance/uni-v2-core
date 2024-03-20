@@ -18,8 +18,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const v2factory = await deployer.deploy(artifact, [wallet.address]);
 
   // Show the contract info.
-  const contractAddress = v2factory.address;
-  // const contractAddress = '0xf8570A0E95D5869FdcB2821D1EFBc63b0b457BF7';
+  const contractAddress = v2factory.target;
   console.log(`${artifact.contractName} was deployed to ${contractAddress}`);
   await hre.run("verify:verify", {
     address: contractAddress,

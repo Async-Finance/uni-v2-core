@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "deploy": "hardhat ignition deploy ignition/modules/Factory.ts --network MerlinTestnet --parameters ignition/parameters.json --verify",
+    "deploy": "hardhat ignition deploy ignition/modules/Factory.ts --network zkLinkTestnet --parameters ignition/parameters.json --verify",
     "deploy-zksync": "hardhat deploy-zksync --script deploy.ts",
     "interact-zksync": "hardhat deploy-zksync --script interact.ts",
     "compile": "hardhat compile",
