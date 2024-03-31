@@ -24,3 +24,10 @@ Change default network to any zksync network(eg. zkSyncTestnetSepolia) in `hardh
 ```
 yarn deploy-zksync
 ```
+
+
+Forked from [Uniswap v2-core](https://github.com/Uniswap/v2-core)
+Make some changes
+
+* `UniswapV2Factory.sol` Change `createPair` Function. Use `new UniswapV2Pair()` to create pair instead of using `create2`
+* Upgrade solidity version from `0.5.16` to `0.8.0`
