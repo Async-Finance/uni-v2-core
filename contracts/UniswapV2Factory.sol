@@ -31,7 +31,9 @@ contract UniswapV2Factory is IUniswapV2Factory {
             getPair[token0][token1] == address(0),
             "UniswapV2: PAIR_EXISTS"
         ); // single check is sufficient
-        pair = address(new UniswapV2Pair(token0, token1));
+        bytes memory bytecode = type(UniswapV2Pair).creationCode;
+        bytes32 salt = keccak256(abi.encodePacked(token0, token1));
+        pair = address(new UniswapV2Pair{salt: salt}(token0, token1));
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);

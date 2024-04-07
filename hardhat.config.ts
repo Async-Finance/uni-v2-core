@@ -1,6 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-ignition-ethers";
+import "@nomicfoundation/hardhat-chai-matchers";
 import "@matterlabs/hardhat-zksync-node";
 import "@matterlabs/hardhat-zksync-deploy";
 import "@matterlabs/hardhat-zksync-solc";
@@ -19,7 +20,7 @@ const config: HardhatUserConfig = {
   zksolc: {
     version: '1.3.13'
   },
-  defaultNetwork: "zkLinkTestnet",
+  defaultNetwork: "zkLink",
   networks: {
     Merlin: {
       url: "https://rpc.merlinchain.io",
@@ -33,7 +34,7 @@ const config: HardhatUserConfig = {
       url: "https://rpc.zklink.io",
       zksync: true,
       ethNetwork: "mainnet",
-      verifyURL: "https://explorer.zklink.io/contracts_verification",
+      verifyURL: "https://explorer.zklink.io/contract_verification",
       accounts: [process.env.SECRET_KEY || ''],
     },
     zkLinkTestnet: {
